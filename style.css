@@ -673,4 +673,94 @@ footer {
         align-items: flex-start;
     }
 
+   /* ---- Add to the END of style.css (placed before the Mobile block is fine too) ---- */
+
+.pub-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.pub-filter a {
+    padding: 7px 16px;
+    border: 1px solid #d5dbe0;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #344454;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.pub-filter a:hover {
+    border-color: #1f5f8b;
+    color: #1f5f8b;
+}
+
+.pub-category {
+    margin-bottom: 60px;
+    scroll-margin-top: 90px;
+}
+
+.pub-category-title {
+    font-size: 22px;
+    color: #18232e;
+    margin-bottom: 5px;
+    letter-spacing: -0.3px;
+}
+
+.publication .authors {
+    color: #53606c;
+}
+
+.publication .authors strong {
+    color: #202b35;
+}
+
+.pub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.pub-links a {
+    padding: 4px 12px;
+    border: 1px solid #d5dbe0;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1f5f8b;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.pub-links a:hover {
+    background: #1f5f8b;
+    border-color: #1f5f8b;
+    color: white;
+}
+
+.pub-badge {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 1px 8px;
+    background: #eef3f7;
+    color: #486071;
+    border-radius: 4px;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pub-empty {
+    padding: 30px 0;
+    border-top: 1px solid #e1e5e8;
+    color: #89939d;
+    font-size: 14px;
+}
+
 }
