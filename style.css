@@ -788,3 +788,17 @@ footer {
     border-color: #d5dbe0;
     color: #1f5f8b;
 }
+
+.pub-badge {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 1px 8px;
+    background: #eef3f7;
+    color: #486071;
+    border-radius: 4px;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
