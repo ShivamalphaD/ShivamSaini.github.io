@@ -360,12 +360,21 @@
         </div>
 
         <!-- Audio player -->
-        <div class="pub-audio">
-            <button class="audio-btn" type="button" aria-label="Play audio summary">▶ Listen to audio summary</button>
-            <audio preload="none">
-                <source src="Bounding_Crosswind_Turbulence_in_Jet_Intakes.m4a" type="audio/mp4">
-            </audio>
-        </div>
+      <!-- Audio player -->
+<div class="pub-audio">
+    <audio preload="metadata">
+        <source src="audio/Bounding_Crosswind_Turbulence_in_Jet_Intakes.m4a" type="audio/mp4">
+    </audio>
+    <div class="ap-label">🎧 Audio summary</div>
+    <div class="ap-controls">
+        <button class="ap-btn ap-back" type="button" aria-label="Back 10 seconds">⏪ 10s</button>
+        <button class="ap-btn ap-play" type="button" aria-label="Play">▶</button>
+        <button class="ap-btn ap-fwd" type="button" aria-label="Forward 10 seconds">10s ⏩</button>
+    </div>
+    <div class="ap-progress">
+        <span class="ap-time ap-current">0:00</span>
+        <input class="ap-seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+        <span class="ap-time ap-duration">0:00</span>
     </div>
 </div>
 <!-- 
@@ -769,22 +778,60 @@
 
 <script>
 document.querySelectorAll('.pub-audio').forEach(box => {
-    const btn = box.querySelector('.audio-btn');
-    const audio = box.querySelector('audio');
-    const idle = '▶ Listen to audio summary';
+    const audio   = box.querySelector('audio');
+    const playBtn = box.querySelector('.ap-play');
+    const backBtn = box.querySelector('.ap-back');
+    const fwdBtn  = box.querySelector('.ap-fwd');
+    const seek    = box.querySelector('.ap-seek');
+    const curEl   = box.querySelector('.ap-current');
+    const durEl   = box.querySelector('.ap-duration');
 
-    btn.addEventListener('click', () => {
+    const fmt = s => {
+        if (!isFinite(s)) return '0:00';
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60).toString().padStart(2, '0');
+        return m + ':' + sec;
+    };
+
+    let dragging = false;
+
+    playBtn.addEventListener('click', () => {
         if (audio.paused) {
+            // pause any other player on the page
             document.querySelectorAll('.pub-audio audio').forEach(a => { if (a !== audio) a.pause(); });
             audio.play();
-            btn.textContent = '⏸ Pause';
         } else {
             audio.pause();
-            btn.textContent = idle;
         }
     });
-    audio.addEventListener('pause', () => btn.textContent = idle);
-    audio.addEventListener('ended', () => btn.textContent = idle);
+
+    backBtn.addEventListener('click', () => {
+        audio.currentTime = Math.max(0, audio.currentTime - 10);
+    });
+    fwdBtn.addEventListener('click', () => {
+        audio.currentTime = Math.min(audio.duration || Infinity, audio.currentTime + 10);
+    });
+
+    audio.addEventListener('play',  () => { playBtn.textContent = '⏸'; playBtn.setAttribute('aria-label', 'Pause'); });
+    audio.addEventListener('pause', () => { playBtn.textContent = '▶'; playBtn.setAttribute('aria-label', 'Play'); });
+    audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+
+    audio.addEventListener('loadedmetadata', () => { durEl.textContent = fmt(audio.duration); });
+
+    audio.addEventListener('timeupdate', () => {
+        if (dragging || !audio.duration) return;
+        seek.value = (audio.currentTime / audio.duration) * 100;
+        curEl.textContent = fmt(audio.currentTime);
+    });
+
+    seek.addEventListener('input', () => {
+        dragging = true;
+        if (audio.duration) curEl.textContent = fmt((seek.value / 100) * audio.duration);
+    });
+    seek.addEventListener('change', () => {
+        if (audio.duration) audio.currentTime = (seek.value / 100) * audio.duration;
+        dragging = false;
+    });
 });
 </script>
     
