@@ -349,6 +349,27 @@
             </div>
 
             <div class="publication">
+    <div class="publication-year">2025</div>
+    <div class="publication-content">
+        <h3>Epistemic Uncertainty Due to Turbulence Closure on Intakes Under Strong Crosswinds</h3>
+        <p class="authors"><strong>Saini, S.</strong>, Sarvankar, S.S. and Vadlamani, N.R.</p>
+        <p class="journal">Aerospace Science and Technology, Volume 169, 111376.</p>
+        <div class="pub-links">
+            <a href="https://doi.org/10.1016/j.ast.2025.111376" target="_blank" rel="noopener">DOI</a>
+            <!-- <a href="papers/ast-2025.pdf" target="_blank" rel="noopener">PDF</a> -->
+        </div>
+
+        <!-- Audio player -->
+        <div class="pub-audio">
+            <button class="audio-btn" type="button" aria-label="Play audio summary">▶ Listen to audio summary</button>
+            <audio preload="none">
+                <source src="audio/Bounding_Crosswind_Turbulence_in_Jet_Intakes.m4a" type="audio/mp4">
+            </audio>
+        </div>
+    </div>
+</div>
+<!-- 
+            <div class="publication">
                 <div class="publication-year">2025</div>
                 <div class="publication-content">
                     <h3>Epistemic Uncertainty Due to Turbulence Closure on Intakes Under Strong Crosswinds</h3>
@@ -360,7 +381,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
         <!-- ============ CONFERENCE PROCEEDINGS ============ -->
@@ -746,6 +767,27 @@
 
     </footer>
 
+<script>
+document.querySelectorAll('.pub-audio').forEach(box => {
+    const btn = box.querySelector('.audio-btn');
+    const audio = box.querySelector('audio');
+    const idle = '▶ Listen to audio summary';
+
+    btn.addEventListener('click', () => {
+        if (audio.paused) {
+            document.querySelectorAll('.pub-audio audio').forEach(a => { if (a !== audio) a.pause(); });
+            audio.play();
+            btn.textContent = '⏸ Pause';
+        } else {
+            audio.pause();
+            btn.textContent = idle;
+        }
+    });
+    audio.addEventListener('pause', () => btn.textContent = idle);
+    audio.addEventListener('ended', () => btn.textContent = idle);
+});
+</script>
+    
 </body>
 
 </html>
