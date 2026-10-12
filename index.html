@@ -361,16 +361,35 @@
 
         <!-- Audio player -->
       <!-- Audio player -->
+<!-- Audio player -->
 <div class="pub-audio">
     <audio preload="metadata">
         <source src="Bounding_Crosswind_Turbulence_in_Jet_Intakes.m4a" type="audio/mp4">
     </audio>
-    <div class="ap-label">🎧 Audio summary</div>
+
+    <div class="ap-label">Audio summary</div>
+
     <div class="ap-controls">
-        <button class="ap-btn ap-back" type="button" aria-label="Back 10 seconds">⏪ 10s</button>
-        <button class="ap-btn ap-play" type="button" aria-label="Play">▶</button>
-        <button class="ap-btn ap-fwd" type="button" aria-label="Forward 10 seconds">10s ⏩</button>
+        <button class="ap-icon ap-back" type="button" aria-label="Back 10 seconds">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/>
+                <text x="12" y="15.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="currentColor" stroke="none">10</text>
+            </svg>
+        </button>
+
+        <button class="ap-play" type="button" aria-label="Play">
+            <svg class="ico-play" viewBox="0 0 24 24" width="24" height="24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg>
+            <svg class="ico-pause" viewBox="0 0 24 24" width="24" height="24"><rect x="6" y="5" width="4" height="14" rx="1.2" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1.2" fill="currentColor"/></svg>
+        </button>
+
+        <button class="ap-icon ap-fwd" type="button" aria-label="Forward 10 seconds">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/>
+                <text x="12" y="15.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="currentColor" stroke="none">10</text>
+            </svg>
+        </button>
     </div>
+
     <div class="ap-progress">
         <span class="ap-time ap-current">0:00</span>
         <input class="ap-seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
