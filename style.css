@@ -803,17 +803,38 @@ footer {
     letter-spacing: 0.5px;
 }
 
-.pub-audio { margin-top: 10px; }
+.pub-audio {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border: 1px solid rgba(128, 128, 128, 0.35);
+    border-radius: 10px;
+    max-width: 420px;
+}
+.ap-label { font-size: 0.85em; opacity: 0.8; margin-bottom: 8px; }
 
-.audio-btn {
-    padding: 6px 14px;
+.ap-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.ap-btn {
+    padding: 6px 12px;
     border: 1px solid currentColor;
     border-radius: 999px;
     background: transparent;
     color: inherit;
     font: inherit;
-    font-size: 0.9em;
+    font-size: 0.85em;
     cursor: pointer;
 }
+.ap-btn:hover { opacity: 0.7; }
+.ap-play { min-width: 44px; font-size: 1em; }
 
-.audio-btn:hover { opacity: 0.7; }
+.ap-progress { display: flex; align-items: center; gap: 8px; }
+.ap-time {
+    font-size: 0.8em;
+    min-width: 36px;
+    font-variant-numeric: tabular-nums;
+}
+.ap-seek { flex: 1; cursor: pointer; }
